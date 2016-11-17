@@ -9,4 +9,7 @@ ADD_DEFINITIONS(
 )
 
 include_directories ( "include/" )
+
+include_directories ( "types/" )
+
 add_executable(test test.cpp)
