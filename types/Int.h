@@ -19,6 +19,7 @@
 
 #include <sstream>
 #include "Element.h"
+#include "cereal/archives/binary.hpp"
 
 class Int : public Element {
 
@@ -30,8 +31,6 @@ public:
     void save(cereal::BinaryOutputArchive &oarchive) {}
 
     void load(cereal::BinaryOutputArchive &oarchive) {}
-
-
 
 };
 
