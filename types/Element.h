@@ -18,15 +18,15 @@
 #define __ELEMENT_BASE_TYPE_INTERFACE_H_
 
 #include <sstream>
-
+#include "cereal/archives/binary.hpp"
 
 class Element {
 
 public:
 
-    virtual void save(std::stringstream ss) = 0;
+    virtual void save(cereal::BinaryOutputArchive &oarchive) = 0;
 
-    virtual void load(std::stringstream ss) = 0;
+    virtual void load(cereal::BinaryOutputArchive &oarchive) = 0;
 
     virtual ~Element() {}
 

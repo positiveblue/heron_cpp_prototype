@@ -19,6 +19,7 @@
 
 #include <sstream>
 #include "Element.h"
+#include "cereal/archives/binary.hpp"
 
 class String : public Element {
 
@@ -28,9 +29,9 @@ public:
 
     String(std::string value) : _value(value) {}
 
-    void save(std::stringstream ss) {}
+    void save(cereal::BinaryOutputArchive &oarchive) {}
 
-    void load(std::stringstream ss) {}
+    void load(cereal::BinaryOutputArchive &oarchive) {}
 
     
 
