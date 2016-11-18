@@ -16,4 +16,4 @@ include_directories ( "serializer/" )
 
 include_directories ( "tuple/" )
 
-add_executable(test test.cpp)
+add_executable(test test.cpp tuple/Tuple.cpp)
