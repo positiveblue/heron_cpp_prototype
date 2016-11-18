@@ -4,6 +4,7 @@
 
 #include "types.h"
 #include "CerealSerializer.h"
+#include "Tuple.h"
 
 int main() {
     // sstream: Will contain the serialization of a tuple
@@ -13,6 +14,9 @@ int main() {
     Element* eInt = new Int(15);
     Element* eString = new String("Jordi");
 
+    // Tuple 
+    Tuple t;
+    
     // Serializer
     CerealSerializer CSerializer;
 
