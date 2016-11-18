@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <fstream>  
 #include <cereal/cereal.hpp>
 
 #include "types.h"
@@ -8,6 +9,20 @@
 #include "IPluggableSerializer.h"
 #include "CerealSerializer.h"
 
+void writeToFile(std::string fname, std::stringstream &ss){  
+    std::ofstream myfile;  
+    myfile.open (fname, std::ios_base::app);
+    myfile << ss.str(); 
+    myfile.close();  
+}  
+
+void readFromFile(std::string fname, std::stringstream &ss){  
+    std::ifstream myfile( fname );
+    if ( myfile ) {
+        ss << myfile.rdbuf();
+        myfile.close();
+    }
+}  
 
 int main() {
     // sstream: Will contain the serialization of a tuple
@@ -32,5 +47,6 @@ int main() {
     
     std::cout << "Cross your fingers" << std::endl;
 
-    tuple.deserialize(CSerializer, ss);
+    writeToFile("serialize.out", ss);
+
 }
