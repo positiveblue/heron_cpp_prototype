@@ -31,7 +31,10 @@ public:
     void serialize(std::stringstream &ss, 
         std::map<std::string, Element* > &tuple) {
         
-        std::cout << "serializing..." << std::endl;
+        cereal::BinaryOutputArchive oarchive (ss);
+
+        for (auto& kv : tuple)
+            kv.second->save(oarchive);
     }
 
     virtual void deserialize(std::stringstream &ss, 
