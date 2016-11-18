@@ -14,4 +14,6 @@ include_directories ( "types/" )
 
 include_directories ( "serializer/" )
 
+include_directories ( "tuple/" )
+
 add_executable(test test.cpp)
