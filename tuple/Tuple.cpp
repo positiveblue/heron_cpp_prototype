@@ -16,8 +16,6 @@
  
 #include "Tuple.h"
 
-Tuple::Tuple() {}
-
 
 Element* Tuple::Get(std::string name) {
     return elements[name];
@@ -27,6 +25,6 @@ void Tuple::Set(std::string name, Element *e) {
     elements[name] = e;
 }
 
-void Tuple::serialize(IPluggableSerializer *serializer, std::stringstream &ss) {
-        serializer(ss, elements);
+void Tuple::serialize(IPluggableSerializer *Serializer, std::stringstream &ss) {
+        Serializer->serialize(ss, elements);
 }
