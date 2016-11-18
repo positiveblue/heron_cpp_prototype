@@ -12,4 +12,6 @@ include_directories ( "include/" )
 
 include_directories ( "types/" )
 
+include_directories ( "serializer/" )
+
 add_executable(test test.cpp)
