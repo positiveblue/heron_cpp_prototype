@@ -18,7 +18,8 @@
 #define __CEREAL_SERIALIZER_H_
 
 #include <sstream>
-#include <cereal/archives/binary.hpp>
+#include "cereal/archives/binary.hpp"
+#include "cereal/types/polymorphic.hpp"
 
 #include "IPluggableSerializer.h"
 #include "../types/types.h"
@@ -29,18 +30,28 @@ class CerealSerializer : public IPluggableSerializer {
 public:
 
     void serialize(std::stringstream &ss, 
-        std::map<std::string, Element* > &tuple) {
+        std::map<std::string, std::shared_ptr<Element> > &tuple) {
         
         cereal::BinaryOutputArchive oarchive (ss);
 
-        for (auto& kv : tuple)
-            kv.second->save(oarchive);
+        oarchive (tuple["Salary"], tuple["Phi"], tuple["Worker"]);
+
     }
 
     virtual void deserialize(std::stringstream &ss, 
-        std::map<std::string, Element* > &tuple) {
+        std::map<std::string, std::shared_ptr<Element> > &tuple) {
         
-        std::cout << "deserializing..." << std::endl;
+        cereal::BinaryInputArchive iarchive(ss);
+
+        std::shared_ptr<Element> Salary(new Int());
+        std::shared_ptr<Element> Phi(new Double());
+        std::shared_ptr<Element> Worker(new String());
+
+        iarchive(Salary, Phi, Worker);
+
+        tuple["Salary"] = Salary;
+        tuple["Phi"] = Phi;
+        tuple["Worker"] = Worker;
     }
 
 };
