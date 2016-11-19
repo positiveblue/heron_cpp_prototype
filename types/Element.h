@@ -19,14 +19,16 @@
 
 #include <sstream>
 #include "cereal/archives/binary.hpp"
+#include "cereal/types/polymorphic.hpp"
+
 
 class Element {
 
 public:
 
-    virtual void save(cereal::BinaryOutputArchive &oarchive) = 0;
+    virtual void save(cereal::BinaryOutputArchive &oarchive) const = 0;
 
-    virtual void load(cereal::BinaryOutputArchive &oarchive) = 0;
+    virtual void load(cereal::BinaryInputArchive &iarchive)  = 0;
 
     virtual ~Element() {}
 
