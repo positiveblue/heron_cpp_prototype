@@ -23,17 +23,19 @@
 
 class Tuple {
     
-    std::map<std::string, Element* > elements;
+    std::map<std::string, std::shared_ptr<Element> > elements;
 
 public:
 
     Tuple() {}
 
-    Element* Get(std::string name);
-
-    void Set(std::string name, Element *e);
+    std::shared_ptr<Element>  Get(std::string name);
+    
+    void Set(std::string name, std::shared_ptr<Element> e);
 
     void serialize(IPluggableSerializer *serializer, std::stringstream &ss);
+
+    void deserialize(IPluggableSerializer *serializer, std::stringstream &ss);
 
 };
 
