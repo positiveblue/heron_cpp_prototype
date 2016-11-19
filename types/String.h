@@ -27,14 +27,28 @@ class String : public Element {
 
 public:
 
+    String() {}
+
     String(std::string value) : _value(value) {}
 
-    void save(cereal::BinaryOutputArchive &oarchive) {}
+    std::string getValue() {
+        return _value;
+    } 
 
-    void load(cereal::BinaryOutputArchive &oarchive) {}
+    void save(cereal::BinaryOutputArchive &oarchive) const {
+        oarchive(_value);
+    }
 
-    
+    void load(cereal::BinaryInputArchive &iarchive) {
+        iarchive(_value);
+    }
 
 };
+
+// Register DerivedClassOne
+CEREAL_REGISTER_TYPE(String);
+
+// Register DerivedClassOne
+CEREAL_REGISTER_POLYMORPHIC_RELATION(Element, String);
 
 #endif

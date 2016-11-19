@@ -20,18 +20,37 @@
 #include <sstream>
 #include "Element.h"
 #include "cereal/archives/binary.hpp"
+#include "cereal/types/polymorphic.hpp"
+
 
 class Int : public Element {
 
     int _value;
     
 public:
+    Int() {}
+
     Int(int value) : _value(value) {}
 
-    void save(cereal::BinaryOutputArchive &oarchive) {}
+    int getValue() {
+        return _value;
+    } 
 
-    void load(cereal::BinaryOutputArchive &oarchive) {}
+    void save(cereal::BinaryOutputArchive &oarchive) const {
+        oarchive(_value);
+    }
+
+    void load(cereal::BinaryInputArchive &iarchive) {
+        iarchive(_value);
+    }
 
 };
+
+// Register DerivedClassOne
+CEREAL_REGISTER_TYPE(Int);
+
+// Register DerivedClassOne
+CEREAL_REGISTER_POLYMORPHIC_RELATION(Element, Int);
+
 
 #endif
