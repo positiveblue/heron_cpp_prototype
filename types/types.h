@@ -17,9 +17,9 @@
 #ifndef __BASIC_HERON_TYPES_H_
 #define __BASIC_HERON_TYPES_H_
 
-
 #include "Element.h"
 #include "Int.h"
+#include "Double.h"
 #include "String.h"
 
 #endif
