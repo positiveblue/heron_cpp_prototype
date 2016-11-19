@@ -28,10 +28,10 @@ class IPluggableSerializer {
 public:
 
     virtual void serialize(std::stringstream &ss, 
-       std::map<std::string, Element* > &tuple) = 0;
+       std::map<std::string, std::shared_ptr<Element> > &tuple) = 0;
 
     virtual void deserialize(std::stringstream &ss, 
-        std::map<std::string, Element* > &tuple) = 0;
+        std::map<std::string, std::shared_ptr<Element> > &tuple) = 0;
 
 };
 
