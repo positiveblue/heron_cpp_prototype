@@ -13,7 +13,7 @@ In this repository you can find a prototype of how a possible C++ implementation
 ## Arquitecture
 The main features that I implemented are:
 
-- *Element:* A pure virtual class with two main methods: save and load. They are going to be used for the serialization/deserealization part. It uses a C++ library called [Cereal]() for it.
+- *Element:* A pure virtual class with two main methods: save and load. They are going to be used for the serialization/deserealization part. It uses a C++ library called [Cereal](http://uscilab.github.io/cereal/) for it.
 - *Basic types:* It is an Element wrapper for some basic types (String, Int, Double)
 - *Tuple:* A tuple is a colection (unordered_map) of *Elements*
 - *Serializer:* A pluggable serializer to define how tuples are serialize/deserialize (user defined)
